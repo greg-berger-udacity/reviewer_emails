@@ -1,4 +1,4 @@
-# Script for generating a list of grader email addresses and first names
+# Script for generating a CSV of unique, non-Udacity grader email addresses
 
 # Download CSV of graders from grading tool rails admin
 # Name this CSV 'names.csv'; output will be in 'names2.csv'
@@ -9,12 +9,15 @@ emails = {}
 with open ('names.csv', 'r') as csvfile:
    csv_rows = csv.reader(csvfile)
    
-   # Assumes that name is in the first column
-   # and email address is in the second column
+   # Assumes that email address is in the second column
+   # Filters out @udacity.com emails
+   # Saves entire row as value
    for row in csv_rows:
-       emails[row[1]] = row[0]
+        if '@udacity.com' not in row[1]:
+            emails[row[1]] = row
 
-# Writes name and email addresses out into csv
+# Writes rows out to csv using csv.writer
 with open ('names2.csv', 'w') as writefile:
-   for (key, value) in emails.iteritems():
-       writefile.write(value + ',' + key + '\r')
+    written_file = csv.writer(writefile)
+    for value in emails.values():
+        written_file.writerow(value)
