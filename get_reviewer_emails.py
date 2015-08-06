@@ -18,7 +18,7 @@ with open ('all_reviewers.csv', 'r') as csvfile:
    for row in csv_rows:
         if row[0] == ' - ' \
         and '@udacity.com' not in row[2] \
-        and row[3]
+        and row[3] \
         and int(row[3]) in [19, 20, 21, 22, 23, 78]:
             reviewers[row[2]] = row
 
