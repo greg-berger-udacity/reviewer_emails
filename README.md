@@ -14,10 +14,10 @@ This script reads a CSV of Udacity project reviewer data and generates a spreads
 * Run the script. The output will be in 'output.csv'.
 
 ### Step 1: Downloading the CSV from reviews-api
-* Go to https://review-api.udacity.com/admin/project_grader
-* Click on 'Export found Project graders'
+* Go to https://review-api.udacity.com/admin/certification
+* Click on 'Export found Certifications'
 * In the tab that opens, deselect 'Select All Fields'
-* Under 'Fields from project graders', select 'Waitlisted at'
+* Under 'Fields from certifications', select 'Waitlisted at'
 * Under 'Fields from associated grader', select 'Name' and 'Email'
 * Under 'Fields from associated project', select 'ID'
 * At the bottom of the page, click on 'Export to CSV' to initiate the download.
@@ -32,9 +32,10 @@ Note: You can select any or all the fields, but choosing the ones mentioned abov
 ### Step 3: Modifying the defaults for custom output
 * Open the source code file 'get\_reviewer\_emails.py'
 * If your downloaded CSV contains additional fields than the ones listed in Step 1, check the row subscripts on lines 19–23 of the script to make sure that they accurately reflect the columns in the downloaded CSV: Line 19 should have the column with the waitlisted date; Lines 20 and 23, the one with the email address; lines 21 and 22, the one with the Project ID
-* On line 22 the default `in range(19, 24)` will provide iOS ND reviewers. Type in a list of the project IDs for the projects whose reviewers you wish to email. E.g., if you want to email just the Spotify Streamer and Popular Movies reviewers, replace `in range(19, 24)` with `in [59, 60, 66, 67]`
+* On line 22 the default `in [19, 20, 21, 22, 23, 78]` will provide iOS ND reviewers. Type in a list of the project IDs for the projects whose reviewers you wish to email. E.g., if you want to email just the Spotify Streamer and Popular Movies reviewers, replace `in [19, 20, 21, 22, 23, 78]` with `in [59, 60, 66, 67]`
+* If you want to email reviewers for all projects, delete line 22 and add a colon to the end of line 21
 * If you want to retain reviewers with an @udacity.com address, delete line 20
-* If you want to retain waitlisted reviewers, remove `row[0] == ' - '` from the conditional
+* If you want to retain waitlisted reviewers, change the `and` on line 20 to `if`, then delete line 19
 * Save your changes and close the source code file. 
 
 ### Step 4: Running the script and getting the output
