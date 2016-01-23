@@ -14,12 +14,12 @@ with open ('all_reviewers.csv', 'r') as csvfile:
     
     # Assumes that email address is in the second column
     # Filters out @udacity.com emails
-    # Filters out waitlisted reviewers
+    # Filters out non-certified reviewers
     # Skips reviewers with no project listed
     # Checks for iOS projects only
     # Saves entire row as value
     for row in csv_rows:
-        if row[0] == ' - ' \
+        if row[0] == 'certified' \
         and '@udacity.com' not in row[2] \
         and row[3] \
         and int(row[3]) in [19, 20, 21, 22, 23, 78]:
