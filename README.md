@@ -2,13 +2,13 @@
 
 This script reads a CSV of Udacity project reviewer data and generates a spreadsheet that can be used to email all project reviewers, or reviewers for specific projects only, via SendGrid.
 
-### Defaults (can be changed while running the script)
+### Defaults (can be changed prior to running the script)
 * Only iOS ND reviewers are in the spreadsheet
 * Udacity email addresses are not included
 * Only certified reviewers are in the spreadsheet
-* Waitlisted reviewers are not included.
 
 ### How to use this script
+This is an overview. Details for each of the steps are given in subsequent sections.
 * Download a CSV of all project reviewers
 * Rename the CSV 'all_reviewers.csv' and move it to the same directory as the script
 * Modify the script as needed for your desired custom output
